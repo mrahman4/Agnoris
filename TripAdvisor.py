@@ -18,7 +18,7 @@ def lambda_handler(event, context):
    location_rating_url_template = "http://api.tripadvisor.com/api/partner/2.0/location/{}?key={}"
    url = location_rating_url_template.format(location_info['location_id'],api_key)
    customers_feedback = urllib.request.urlopen(url).read()
-   print customers_feedback
+   #print customers_feedback
 
    query_template = "INSERT INTO table (lat, lng, name, rating) VALUES ({}, {}, {}, {});"
    query = query_template.format(event['lat'],event['lng'],event['name'], customers_feedback[rating])
